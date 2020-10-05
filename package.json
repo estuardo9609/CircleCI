@@ -4,7 +4,8 @@
 	"description": "CircleCi pipeline for building Node Js app and uploading to AWS ECS environment.",
 	"main": "app.js",
 	"scripts": {
-		"start": "node app.js"
+    "start": "node app.js",
+    "test": "mocha ./src/test/*"
 	},
 	"repository": {
 		"type": "git",
@@ -18,5 +19,9 @@
 		"body-parser": "1.19.0",
 		"cors": "2.8.5",
 		"express": "4.16.4"
+	},
+	"devDependencies": {
+		"chai": "4.2.0",
+		"mocha": "8.1.3"
 	}
 }
