@@ -13,8 +13,9 @@ jobs:
           command: |
             echo "I have succesfully installed my node modules, trying to "
       # Since I have my node modules i will take them to workspace
+      # https://discuss.circleci.com/t/understanding-persist-to-workspace/31369
       - persist_to_workspace:
-          root: ~/
+          root: .
           paths:
             - project/node_modules
   
@@ -23,6 +24,8 @@ jobs:
     executor: node/default
     steps:
       - checkout
+      - attach_workspace:
+          at: project/node_modules
       - node/install-npm
       - run:
           command: npm run test
