@@ -15,7 +15,7 @@ jobs:
       # Since I have my node modules i will take them to workspace
       # https://discuss.circleci.com/t/understanding-persist-to-workspace/31369
       - persist_to_workspace:
-          root: .
+          root: ~/
           paths:
             - project/node_modules
   
