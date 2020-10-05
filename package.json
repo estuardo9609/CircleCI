@@ -1,0 +1,22 @@
+{
+	"name": "circle-ci",
+	"version": "1.0.0",
+	"description": "CircleCi pipeline for building Node Js app and uploading to AWS ECS environment.",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/estuardo9609/CircleCI.git"
+	},
+	"keywords": [
+		"CircleCi"
+	],
+	"author": "Estuardo Estrada",
+	"dependencies": {
+		"body-parser": "1.19.0",
+		"cors": "2.8.5",
+		"express": "4.16.4"
+	}
+}
