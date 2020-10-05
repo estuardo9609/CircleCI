@@ -1,0 +1,41 @@
+version: 2.1
+jobs:
+  # I will install node modules separetly to use a workspace
+  install:
+    executor: node/default
+    steps:
+      - checkout
+      # Install project packages to get node modules
+      - node/install-packages:
+        override-ci-command: npm install
+      - run:
+        command: |
+          echo "I have succesfully installed my node modules"
+      # Since I have my node modules i will take them to workspace
+      - persist_to_workspace:
+        root: ./node_modules
+        paths:
+          - node_modules
+  
+  # I will run my tests now
+  test:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-npm
+      - run:
+        command: npm run test
+  
+orbs:
+  # https://circleci.com/developer/orbs/orb/circleci/node
+  node: circleci/node@4.1.0
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - install
+      - test:
+          requires:
+            - install
+  
