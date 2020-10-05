@@ -8,15 +8,14 @@ jobs:
       # Install project packages to get node modules
       - node/install-packages:
           override-ci-command: npm install
-          with-cache: false
       - run:
           command: |
             echo "I have succesfully installed my node modules, trying to "
       # Since I have my node modules i will take them to workspace
       - persist_to_workspace:
-          root: ./node_modules
+          root: .
           paths:
-            - node_modules
+            - ~/.npm
   
   # I will run my tests now
   test:
