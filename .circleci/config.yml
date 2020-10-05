@@ -2,6 +2,7 @@ version: 2.1
 jobs:
   # I will install node modules separetly to use a workspace
   install:
+    working_directory: ~/app
     executor: node/default
     steps:
       - checkout
@@ -15,9 +16,9 @@ jobs:
       # Since I have my node modules i will take them to workspace
       # https://discuss.circleci.com/t/understanding-persist-to-workspace/31369
       - persist_to_workspace:
-          root: ~/
+          root: /root/app/project
           paths:
-            - project/node_modules
+            - node_modules
   
   # I will run my tests now
   test:
@@ -25,7 +26,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: project/node_modules
+          at: .
       - node/install-npm
       - run:
           command: npm run test
