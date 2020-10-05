@@ -14,7 +14,7 @@ jobs:
             echo "I have succesfully installed my node modules, trying to "
       # Since I have my node modules i will take them to workspace
       - persist_to_workspace:
-          root: /node_modules
+          root: ./node_modules
           paths:
             - node_modules
   
