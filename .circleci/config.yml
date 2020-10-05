@@ -14,11 +14,12 @@ jobs:
           command: |
             echo "I have succesfully installed my node modules, trying to "
       # Since I have my node modules i will take them to workspace
-      # https://discuss.circleci.com/t/understanding-persist-to-workspace/31369
+      # https://circleci.com/docs/2.0/configuration-reference/#persist_to_workspace
+      # https://discuss.circleci.com/t/error-locating-workspace-root-directory-stat/13709/3
       - persist_to_workspace:
-          root: /root/app/project
+          root: /root/app/project/node_modules
           paths:
-            - node_modules
+            - .
   
   # I will run my tests now
   test:
