@@ -19,10 +19,5 @@ app.use(function (req, res, next) {
 
 let PORT
 
-if (process.env.NODE_ENV && process.env.NODE_ENV === 'production') {
-  PORT = 80
-  app.listen(PORT, () => console.log('Project listening on port 80'))
-} else {
-  PORT = 3001
-  app.listen(PORT, () => console.log('Project listening on port 3001'))
-}
+PORT = 80
+app.listen(PORT, () => console.log('Project listening on port 80'))
