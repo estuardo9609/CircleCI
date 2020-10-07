@@ -49,8 +49,8 @@ jobs:
           image: estuardo9609/nodejs-calculator
           tag: "latest,$CIRCLE_SHA1"
       - run:
-        command: |
-          echo "Digest is: $(</tmp/digest.txt)"
+          command: |
+            echo "Digest is: $(</tmp/digest.txt)"
   
 orbs:
   # https://circleci.com/developer/orbs/orb/circleci/node
