@@ -25,11 +25,32 @@ jobs:
   test:
     executor: node/default
     steps:
-      - checkout
       - attach_workspace:
           at: .
       - run:
+          name: Test
           command: npm run test
+  
+  # Build and push to dockerhub
+  build-and-push:
+    executor: docker/docker
+    steps:
+      - setup_remote_docker
+      - checkout
+      - docker/check
+      - docker/build:
+          image: estuardo9609/nodejs-calculator
+          tag: "latest,$CIRCLE_SHA1"
+      - run:
+          command: |
+            echo "Succesfully build a docker image estuardo9609/nodejs-calculator"
+      - docker/push:
+          digest-path: /tmp/digest.txt
+          image: estuardo9609/nodejs-calculator
+          tag: "latest,$CIRCLE_SHA1"
+      - run:
+        command: |
+          echo "Digest is: $(</tmp/digest.txt)"
   
 orbs:
   # https://circleci.com/developer/orbs/orb/circleci/node
