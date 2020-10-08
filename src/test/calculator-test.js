@@ -5,7 +5,7 @@ const calculator = require('../service/calculatorService')
 describe('calculatorService', () => {
   context('sum', () => {
     it('Should return an operation result', () => {
-      expect(calculator.sum(1,2)).to.equal(3)
+      expect(calculator.sum(1,2)).to.equal(5)
     })
   })
 })
