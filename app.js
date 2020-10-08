@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
 app.use('/api', routes)
 
 app.get('/', (req, res, next) => {
-  res.json('WELCOME TO THIS CIRCLE CI SIMPLE TUTORIAL.')
+  res.json('NOW IT IS A DIFFERENT MESSAGE FOR THE APP.')
 })
 
 // catch 404 and forward to error handler
