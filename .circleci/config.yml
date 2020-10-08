@@ -11,10 +11,8 @@ jobs:
           cache-path: node_modules
       - run:
           command: |
-            echo "I have succesfully installed my node modules, trying to "
-      # Since I have my node modules i will take them to workspace
+            echo "I have succesfully installed my node modules."
       # https://circleci.com/docs/2.0/configuration-reference/#persist_to_workspace
-      # https://discuss.circleci.com/t/error-locating-workspace-root-directory-stat/13709/3
       # Taking all directories to workspace
       - persist_to_workspace:
           root: .
@@ -64,8 +62,8 @@ jobs:
       - run:
           name: Deploy
           command: |
-            ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image website-service pnadalini/node-circleci:$CIRCLE_SHA1 --timeout 1200 --ignore-warnings --region $AWS_REGION
-
+            ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image ejestrada-node estuardo9609/nodejs-calculator:$CIRCLE_SHA1 --timeout 1200 --ignore-warnings --region $AWS_REGION
+            
 orbs:
   # https://circleci.com/developer/orbs/orb/circleci/node
   node: circleci/node@4.1.0
@@ -83,4 +81,7 @@ workflows:
       - build-and-push:
           requires:
             - test
+      - deploy:
+          requires:
+            - build-and-push
   
