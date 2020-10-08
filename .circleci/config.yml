@@ -62,7 +62,7 @@ jobs:
       - run:
           name: Deploy
           command: |
-            ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image ejestrada-node estuardo9609/nodejs-calculator:$CIRCLE_SHA1 --timeout 1200 --ignore-warnings --region $AWS_REGION
+            ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image website-service estuardo9609/nodejs-calculator:$CIRCLE_SHA1 --timeout 1200 --ignore-warnings --region $AWS_REGION
             
 orbs:
   # https://circleci.com/developer/orbs/orb/circleci/node
@@ -81,7 +81,7 @@ workflows:
       - build-and-push:
           requires:
             - test
-      #- deploy:
-      #    requires:
-      #      - build-and-push
+      - deploy:
+          requires:
+            - build-and-push
   
