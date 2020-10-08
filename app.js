@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
 app.use('/api', routes)
 
 app.get('/', (req, res, next) => {
-  res.json('WELCOME TO THE SIMPLE CALCULATOR. TO WORK WITH IT JUST CALL THE METHOD YOU WISH (sum, substract, multiply, divide)')
+  res.json('WELCOME TO THIS CIRCLE CI SIMPLE TUTORIAL.')
 })
 
 // catch 404 and forward to error handler
